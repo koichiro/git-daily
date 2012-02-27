@@ -1,7 +1,9 @@
 git-daily
 ===========================
 
-"git-daily on Ruby" is a tool which helps you to do daily workflow easier on Git. This is the Ruby version. The original PHP version is here: https://github.com/sotarok/git-daily
+"git-daily on Ruby" is a tool which helps you to do daily workflow easier on Git. This is the Ruby version. 
+
+The original PHP version is here: https://github.com/sotarok/git-daily
 
 Sub-commands are::
 
