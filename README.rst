@@ -33,7 +33,7 @@ Requirements
 Installation
 --------------------------
 
-Install from openpear.org ::
+Install from rubygems ::
 
     gem instasll git-daily
 
