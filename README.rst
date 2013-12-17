@@ -35,7 +35,7 @@ Installation
 
 Install from rubygems ::
 
-    gem instasll git-daily
+    gem install git-daily
 
 Install develop version ::
 
