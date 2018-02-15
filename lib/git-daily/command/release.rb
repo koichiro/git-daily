@@ -288,7 +288,13 @@ module Git
         end
 
         current_branch = Command.current_branch
-        master_branch = Command.master
+
+        remote = Command.remote
+        master_branch = if remote
+                          Command.remote_branch(remote, Command.master)
+                        else
+                          Command.master
+                        end
 
         puts "first, fetch remotes"
         `git fetch --all`
