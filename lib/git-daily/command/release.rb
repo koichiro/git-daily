@@ -47,7 +47,7 @@ module Git
 
         rel_branches = Command.release_branches(@branch_prefix)
         unless rel_branches.empty?
-          raise "release process (on local) is not closed, so cannot open relase\n    release branches: #{rel_branches.join(',')}"
+          raise "release process (on local) is not closed, so cannot open release\n    release branches: #{rel_branches.join(',')}"
         end
 
         remote = Command.remote
@@ -57,7 +57,7 @@ module Git
 
           rels = `git branch -a --no-color`.split(/\n/).select { |b| b[/remotes\/#{remote}\/#{@branch_prefix}/]}
           unless rels.empty?
-            raise "relase process (on local) is not closed, so cannot open releas\n    relase branchs: #{rels.join(',')}"
+            raise "release process (on local) is not closed, so cannot open release\n    release branches: #{rels.join(',')}"
           end
         end
 
@@ -237,7 +237,7 @@ module Git
             end
 
             if r_rel_branch != rel
-              $stderr.puts "Closed old relase branch"
+              $stderr.puts "Closed old release branch"
               $stderr.puts "Please retry 'release sync'"
             end
             puts "sync to release close"
