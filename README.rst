@@ -41,6 +41,7 @@ Install develop version ::
 
     cd /path/to/dir
     git clone git://github.com/koichiro/git-daily.git
+    cd git-daily
     rake build
     gem install pkg/git-daily-X.X.X.gem
 
