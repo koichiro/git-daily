@@ -9,7 +9,7 @@ class TestCommandRelease < Test::Unit::TestCase
     @command = Git::Daily::Release.new
   end
 
-  def test_relase_open
+  def test_release_open
     @command.open
   end
 
