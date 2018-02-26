@@ -56,6 +56,12 @@ module Git
         r.empty? ? nil : r
       end
 
+      def self.pull_request_url
+        r = `git config gitdaily.pullRequestUrl`
+        r.chomp!
+        r.empty? ? nil : r
+      end
+
       def self.current_branch
         r = `git branch --no-color`.split(/\n/)
         master = r.select { |v| v[/^\*/] }

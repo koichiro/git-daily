@@ -375,6 +375,20 @@ module Git
             puts
           end
         end
+
+        if Command.pull_request_url
+          puts 'Pull Requests: '
+
+          urlBase = Command.pull_request_url
+          merges = `git log --merges --pretty=format:'%<(30)%s | %an' #{master_branch}..#{current_branch}`.split(/\n/)
+
+          merges.each do |merge|
+            merge.match(/^Merge pull request #(?<id>[1-9][0-9]*) .+$/) do |match|
+              url = sprintf(urlBase,  match[:id])
+              puts "\t#{url} | #{match[0]}"
+            end
+          end
+        end
       end
 
       def usage
