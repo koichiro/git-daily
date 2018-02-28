@@ -59,6 +59,20 @@ module Git
       def self.pull_request_url
         r = `git config gitdaily.pullRequestUrl`
         r.chomp!
+
+        return r unless r.empty?
+
+        remote = self.remote
+        if remote
+          url_format = "https://github.com/%s/%s/pull/%s"
+          github = `git config remote.#{remote}.url`
+          github.chomp!
+
+          github.match(/^git@github\.com:(?<org>.+)\/(?<repo>.+)\.git$/) do |match|
+            r = sprintf(url_format, match[:org], match[:repo], "%d")
+          end
+        end
+
         r.empty? ? nil : r
       end
 
