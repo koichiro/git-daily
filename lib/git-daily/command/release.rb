@@ -14,9 +14,9 @@ module Git
       } unless const_defined? :SUBCOMMAND
 
       def initialize
-        @base_branch = "develop"
+        @base_branch = Command.develop
         @branch_prefix = "release"
-        @merge_to = ["master", "develop"]
+        @merge_to = [Command.master, Command.develop]
       end
 
       def help
