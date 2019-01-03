@@ -14,7 +14,7 @@ module Git
         raise NotImplementedError.new("You most implement help.")
       end
 
-      def help
+      def usage
         raise NotImplementedError.new("You most implement usage.")
       end
 
