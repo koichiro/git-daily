@@ -22,7 +22,7 @@ module Git
         end
         remotes = `git config --list`.split(/\n/).select {|a| a[/^remote\.([^\.]+)\.url/] }
         if remotes.empty?
-          raise "don't have remote repojitory"
+          raise "don't have remote repository"
         end
 
         remotes.map! {|r| r[/^remote\.([^\.]+)\.url=(.*)/, 1] }
