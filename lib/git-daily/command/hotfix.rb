@@ -19,9 +19,9 @@ module Git
       def merge_branches
         rel_branches = Command.release_branches(@release_branch_prefix)
         if rel_branches.empty?
-          return [@base_branch, Command.develop]
+          return [Command.master, Command.develop]
         else
-          return [@base_branch, @release_branch_prefix]
+          return [Command.master, @release_branch_prefix]
         end
       end
 
