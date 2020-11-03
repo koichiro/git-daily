@@ -46,13 +46,18 @@ module Git
         puts "Your remote is [#{selected_url}]"
         Git::Daily.application.remote = selected_url
 
-        # master branch
-        print "Name master branch [master]: "
-        master = gets.strip
-        if master.empty?
-          master = "master"
+        # main branch
+        main_default = if Command.has_branch? "main"
+                         "main"
+                       else
+                         "master"
+                       end
+        print "Name main branch [#{main_default}]: "
+        main = gets.strip
+        if main.empty?
+          main = main_default
         end
-        `git config gitdaily.master #{master}`
+        `git config gitdaily.master #{main}`
 
         # develop branch
         print "Name develop branch [develop]: "
