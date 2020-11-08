@@ -16,7 +16,7 @@ module Git
       def initialize
         @base_branch = Command.develop
         @branch_prefix = "release"
-        @merge_to = [Command.master, Command.develop]
+        @merge_to = [Command.main, Command.develop]
       end
 
       def help
@@ -291,9 +291,9 @@ module Git
 
         remote = Command.remote
         master_branch = if remote
-                          Command.remote_branch(remote, Command.master)
+                          Command.remote_branch(remote, Command.main)
                         else
-                          Command.master
+                          Command.main
                         end
 
         puts "first, fetch remotes"

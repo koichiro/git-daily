@@ -7,7 +7,7 @@ module Git
     class Hotfix < Release
 
       def initialize
-        @base_branch = Command.master
+        @base_branch = Command.main
         @branch_prefix = 'hotfix'
         @release_branch_prefix =  'release'
       end
@@ -19,9 +19,9 @@ module Git
       def merge_branches
         rel_branches = Command.release_branches(@release_branch_prefix)
         if rel_branches.empty?
-          return [Command.master, Command.develop]
+          return [Command.main, Command.develop]
         else
-          return [Command.master, @release_branch_prefix]
+          return [Command.main, @release_branch_prefix]
         end
       end
 

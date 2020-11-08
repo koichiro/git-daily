@@ -57,7 +57,7 @@ module Git
         if main.empty?
           main = main_default
         end
-        `git config gitdaily.master #{main}`
+        `git config gitdaily.main #{main}`
 
         # develop branch
         print "Name develop branch [develop]: "

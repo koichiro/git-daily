@@ -38,6 +38,12 @@ module Git
         r.empty? ? nil : r
       end
 
+      def self.main
+        r = `git config gitdaily.main`
+        r.chomp!
+        r.empty? ? master : r
+      end
+
       def self.master
         r = `git config gitdaily.master`
         r.chomp!
