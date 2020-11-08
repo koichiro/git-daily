@@ -290,7 +290,7 @@ module Git
         current_branch = Command.current_branch
 
         remote = Command.remote
-        master_branch = if remote
+        main_branch = if remote
                           Command.remote_branch(remote, Command.main)
                         else
                           Command.main
@@ -300,7 +300,7 @@ module Git
         `git fetch --all`
 
         revs = []
-        rev_ids = `git rev-list --no-merges #{master_branch}..#{current_branch}`.split(/\n/)
+        rev_ids = `git rev-list --no-merges #{main_branch}..#{current_branch}`.split(/\n/)
         rev_ids.each do |rev_id|
           rev = {}
           rev[:id] = rev_id
@@ -380,7 +380,7 @@ module Git
           puts 'Pull Requests: '
 
           urlBase = Command.pull_request_url
-          merges = `git log --merges --pretty=format:'%<(30)%s | %an' #{master_branch}..#{current_branch}`.split(/\n/)
+          merges = `git log --merges --pretty=format:'%<(30)%s | %an' #{main_branch}..#{current_branch}`.split(/\n/)
 
           merges.each do |merge|
             merge.match(/^Merge pull request #(?<id>[1-9][0-9]*) .+$/) do |match|
