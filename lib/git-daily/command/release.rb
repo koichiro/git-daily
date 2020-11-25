@@ -16,7 +16,7 @@ module Git
       def initialize
         @base_branch = Command.develop
         @branch_prefix = "release"
-        @merge_to = [Command.master, Command.develop]
+        @merge_to = [Command.main, Command.develop]
       end
 
       def help
@@ -290,17 +290,17 @@ module Git
         current_branch = Command.current_branch
 
         remote = Command.remote
-        master_branch = if remote
-                          Command.remote_branch(remote, Command.master)
+        main_branch = if remote
+                          Command.remote_branch(remote, Command.main)
                         else
-                          Command.master
+                          Command.main
                         end
 
         puts "first, fetch remotes"
         `git fetch --all`
 
         revs = []
-        rev_ids = `git rev-list --no-merges #{master_branch}..#{current_branch}`.split(/\n/)
+        rev_ids = `git rev-list --no-merges #{main_branch}..#{current_branch}`.split(/\n/)
         rev_ids.each do |rev_id|
           rev = {}
           rev[:id] = rev_id
@@ -380,7 +380,7 @@ module Git
           puts 'Pull Requests: '
 
           urlBase = Command.pull_request_url
-          merges = `git log --merges --pretty=format:'%<(30)%s | %an' #{master_branch}..#{current_branch}`.split(/\n/)
+          merges = `git log --merges --pretty=format:'%<(30)%s | %an' #{main_branch}..#{current_branch}`.split(/\n/)
 
           merges.each do |merge|
             merge.match(/^Merge pull request #(?<id>[1-9][0-9]*) .+$/) do |match|

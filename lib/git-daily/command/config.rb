@@ -26,12 +26,12 @@ module Git
             raise "no such branch: #{input}"
           end
         },
-        "master" => lambda {
+        "main" => lambda {
           b = branches
           input = ARGV.shift
           if b.find { |v| v == input }
-            `git config gitdaily.master #{input}`
-            puts "Your master branch is [#{input}]"
+            `git config gitdaily.main #{input}`
+            puts "Your main branch is [#{input}]"
           else
             raise "no such branch: #{input}"
           end
@@ -77,8 +77,8 @@ Example:
     Branch name of develop :
         git daily config develop develop
 
-    Branch name of master :
-        git daily config master master
+    Branch name of main :
+        git daily config main main
 
     URL template for dump list (will dump commit hash instead of "%s") :
         GitWeb :  git daily config logurl "http://example.com/?p=repositories/example.git;a=commit;h=%s"
